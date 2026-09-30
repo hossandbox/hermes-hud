@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "name": "Hermes HUD",
+  "description": "Heads-up items, schedule and reminders from your Hermes agent.",
+  "appearance": {
+    "theme_color": "#3867D6",
+    "icon": {
+      "src": "../icon.png",
+      "type": "monochrome"
+    },
+    "icon_background": {
+      "colors": ["#4C86FF", "#2A5BD7", "#12308F", "#060F35"],
+      "stops": [0.0, 0.34, 0.72, 1.0],
+      "inner_glow_color": "#A9C6FF"
+    }
+  }
+}

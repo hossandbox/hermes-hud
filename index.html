@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hermes HUD</title>
+<meta name="description" content="Heads-up task and schedule display for Meta Ray-Ban Display glasses.">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <header class="hud-header">
+    <h1 class="hud-title">
+      <span class="brand">HERMES</span>
+      <span class="clock" id="clock">--:--</span>
+    </h1>
+    <p class="hud-sub" id="hud-date">&nbsp;</p>
+  </header>
+
+  <nav class="tabs" aria-label="Sections">
+    <button type="button" class="tab" id="tab-items" aria-current="page">Items</button>
+    <button type="button" class="tab" id="tab-settings">Settings</button>
+  </nav>
+
+  <main class="content" id="view-items">
+
+    <form class="row-form" id="add-form" autocomplete="off">
+      <label class="visually-hidden" for="new-item">New item text</label>
+      <input
+        id="new-item"
+        name="new-item"
+        type="text"
+        enterkeyhint="done"
+        placeholder="Add item"
+        autocomplete="off"
+        spellcheck="false">
+      <button type="submit" class="btn-primary" id="add-btn">Add</button>
+    </form>
+
+    <div class="scroller">
+      <ul class="item-list" id="item-list" aria-label="Items"></ul>
+      <p class="empty" id="empty-state">Nothing here yet.</p>
+    </div>
+
+  </main>
+
+  <main class="content" id="view-settings" hidden>
+
+    <div class="scroller">
+      <section class="panel">
+        <h2 class="panel-title">Feed URL</h2>
+        <p class="panel-note">Optional JSON endpoint merged into your items. Leave blank to stay fully local.</p>
+        <form class="row-form" id="feed-form" autocomplete="off">
+          <label class="visually-hidden" for="feed-url">Feed URL</label>
+          <input
+            id="feed-url"
+            name="feed-url"
+            type="url"
+            inputmode="url"
+            enterkeyhint="done"
+            placeholder="https://example.com/hud.json"
+            autocomplete="off"
+            spellcheck="false">
+          <button type="submit" class="btn-primary" id="feed-save">Save</button>
+        </form>
+        <p class="panel-note" id="feed-state">Not configured.</p>
+      </section>
+
+      <section class="panel">
+        <h2 class="panel-title">Actions</h2>
+        <ul class="action-list">
+          <li><button type="button" class="btn" id="sync-btn">Sync now</button></li>
+          <li><button type="button" class="btn" id="clear-done-btn">Clear completed</button></li>
+          <li><button type="button" class="btn" id="export-btn">Export items</button></li>
+          <li><button type="button" class="btn btn-danger" id="reset-btn">Reset everything</button></li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2 class="panel-title">About</h2>
+        <p class="panel-note" id="about-note">
+          Hermes HUD &middot; built for Meta Ray-Ban Display (600&times;600 additive).
+        </p>
+      </section>
+    </div>
+
+  </main>
+
+  <footer class="hud-footer">
+    <span id="status-line">Local only</span>
+    <span class="dot" aria-hidden="true">&middot;</span>
+    <span id="count-line">0 items</span>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="./app.js"></script>
+</body>
+</html>
